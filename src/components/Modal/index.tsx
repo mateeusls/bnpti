@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import styles from './style.module.css';
+import { X } from 'lucide-react';
+import { Button } from '../ui/button';
 
 type ModalProps = {
 	children: React.ReactNode;
@@ -41,24 +43,24 @@ export const Modal: React.FC<ModalProps> = ({ children, title, isOpen, ...props 
 		<div data-modal-wrapper className={styles.wrapper} onClick={handleCloseClick} onKeyDown={handleKeyDown}>
 			<div data-modal-container>
 				<header data-modal-header>
-					<h2>{title}</h2>
+					<h2 className='font-bold text-xl'>{title}</h2>
 
-					<button data-modal-close onClick={handleCloseClick}>
+					<Button variant="ghost" className='text-xl' onClick={handleCloseClick}>
 						X
-					</button>
+					</Button>
 				</header>
 
 				{children}
 
 				{props.footer && (
 					<div data-modal-footer>
-						<button data-modal-cancel onClick={handleCloseClick}>
+						<Button variant="secondary" onClick={handleCloseClick}>
 							{props.footer?.cancelText ?? 'Cancelar'}
-						</button>
+						</Button>
 
-						<button data-modal-confirm onClick={handleConfirmClick} data-type="confirm">
+						<Button variant="success" onClick={handleConfirmClick}>
 							{props.footer?.confirmText ?? 'Confirmar'}
-						</button>
+						</Button>
 					</div>
 				)}
 			</div>

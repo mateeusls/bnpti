@@ -12,9 +12,7 @@ export default function Document() {
 				/>
 			</Head>
 
-			<body style={{
-				backgroundColor: '#030712',
-			}}>
+			<body className='bg-gray-950'>
 				<Main />
 				<NextScript />
 			</body>

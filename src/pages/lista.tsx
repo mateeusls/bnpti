@@ -8,14 +8,15 @@
 
 import { useEffect, useState } from 'react';
 
-import styles from '@/styles/lista.module.css';
 import { IUser } from '@/types/user';
+import { DataTable } from '@/components/user-list/data-table';
+import { columns } from '@/components/user-list/columns';
 
 export default function Lista() {
 	const [users, setUsers] = useState<Array<IUser>>([]);
 
 	async function getUsersList() {
-		await new Promise((resolve) => setTimeout(resolve, 1000));
+		await new Promise((resolve) => setTimeout(resolve, 100));
 
 		try {
 			const response = await fetch('/api/users');
@@ -34,18 +35,19 @@ export default function Lista() {
 	}, []);
 
 	return (
-		<div className={styles.container}>
-			<div className={styles.content}>
-				<h2>Lista de usuários</h2>
+		<div className="flex justify-center items-center h-screen">
+			<div className="bg-gray-400 rounded p-5 max-w-[1024px] w-full h-[930px]">
+				<h2 className='xl font-bold'>Lista de usuários</h2>
 
-				<div data-list-container>
-					{users.map((user) => {
+				<div>
+					<DataTable columns={columns} data={users}/>
+					{/* {users.map((user) => {
 						return (
 							<div data-list-item key={user.id}>
 								ID {user.id} - Usuário {user.name} ({user.email})
 							</div>
 						);
-					})}
+					})} */}
 					{/* <div data-list-item>ID 323 - Usuário 323 (user-323@mail.com)</div> */}
 				</div>
 			</div>

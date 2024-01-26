@@ -8,6 +8,9 @@ import { useState } from 'react';
 
 import styles from '@/styles/modal.module.css';
 import { Modal } from '@/components/Modal';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 export default function Home() {
 	const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -26,13 +29,13 @@ export default function Home() {
 			<div data-modal-content className={styles['modal-form']}>
 				<form onSubmit={() => false}>
 					<div>
-						<label htmlFor="input-name">Nome</label>
-						<input type="text" id="input-name" placeholder="Insira um nome" />
+						<Label htmlFor="input-name">Nome</Label>
+						<Input type="text" id="input-name" placeholder="Insira um nome" />
 					</div>
 
 					<div>
-						<label htmlFor="input-name">E-mail</label>
-						<input type="email" id="input-name" placeholder="Insira um e-mail válido" />
+						<Label htmlFor="input-name">E-mail</Label>
+						<Input type="email" id="input-name" placeholder="Insira um e-mail válido" />
 					</div>
 				</form>
 			</div>
@@ -42,9 +45,9 @@ export default function Home() {
 	return (
 		<>
 			<main className={styles.container}>
-				<button type="button" onClick={() => setModalIsOpen(true)}>
+				<Button type="button" onClick={() => setModalIsOpen(true)} className='bg-gray-800'>
 					Abrir modal
-				</button>
+				</Button>
 			</main>
 
 			{/* modal */}

@@ -8,14 +8,6 @@
 	align-items: center;
 }
 
-.container[data-isOpen='false'] {
-	display: none;
-}
-
-.container[data-isOpen='true'] {
-	display: block;
-}
-
 .container [data-close] {
 	margin-left: 1rem;
 	font-size: 0.75rem;

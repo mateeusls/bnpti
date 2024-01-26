@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Button } from '../ui/button';
 
 type CounterProps = {
 	initialCount: number;
@@ -10,36 +11,30 @@ export const Counter: React.FC<CounterProps> = ({ initialCount }) => {
 	useEffect(() => {
 		const mountEvent = new Event('onCounterMount');
     window.dispatchEvent(mountEvent);
+
+		
 	}, []);
 
 	useEffect(() => {
-		const updateInterval = setInterval(() => {
-      const updateEvent = new CustomEvent('onCounterUpdate', { detail: { count } });
-      window.dispatchEvent(updateEvent);
+		if(count === 10) {
+			const unmountEvent = new Event('onCounterUnmount');
+			window.dispatchEvent(unmountEvent);
+		}
+	}, [count]);
 
-			if(count < 10) {
-				setCount(count + 1);
-			} else {
-				const unmountEvent = new Event('onCounterUnmount');
-				window.dispatchEvent(unmountEvent);
-
-				setCount(0);
-			}
-    }, 1000);
-
-		return () => {
-      clearInterval(updateInterval);
-    };
-	});
+	useEffect(() => {
+		const updateEvent = new CustomEvent('onCounterUpdate', { detail: { count } });
+		window.dispatchEvent(updateEvent);
+	}, [count]);
 
 	const handleIncrement = () => {
 		setCount((prevCount) => prevCount + 1);
 	};
 
 	return (
-		<div>
-			<h2>Contador: {count}</h2>
-			<button onClick={handleIncrement}>Incrementar +</button>
+		<div className='space-y-10 flex flex-col items-center'>
+			<h2 className='xl font-bold'>Contador: {count}</h2>
+			<Button variant="success" onClick={handleIncrement}>Incrementar +</Button>
 		</div>
 	);
 };

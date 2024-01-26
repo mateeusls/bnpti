@@ -12,8 +12,8 @@ import { useState } from 'react';
 import Head from 'next/head';
 
 import styles from '@/styles/modal-de-confirmacao.module.css';
-import { ConfirmationModal } from '@/components/confirmation-modal';
 import { Modal } from '@/components/Modal';
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
 	const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -30,9 +30,9 @@ export default function Home() {
 			<div data-modal-content className={styles['modal-increment']}>
 				<p>{count}</p>
 
-				<button type="button" onClick={handleIncrementCount}>
+				<Button type="button" variant="success" onClick={handleIncrementCount}>
 					Incrementar
-				</button>
+				</Button>
 
 			</div>
 		);
@@ -44,9 +44,13 @@ export default function Home() {
 				<title>Confirmação</title>
 			</Head>
 			<main className={styles.container}>
-				<button type="button" onClick={() => setModalIsOpen(true)}>
+				<Button 
+					className='bg-gray-800' 
+					type="button" 
+					onClick={() => setModalIsOpen(true)}
+				>
 					Abrir modal de confirmação
-				</button>
+				</Button>
 			</main>
 
 			<Modal

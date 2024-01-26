@@ -13,7 +13,6 @@
 import { NextApiRequest, NextApiResponse } from 'next/types';
 
 import users from '../../../../users.json'
-import { randomUUID } from 'node:crypto';
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
 	const {method} = req

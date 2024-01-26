@@ -9,9 +9,12 @@
  * [] Lide com os possíveis erros
  */
 
-import styles from '@/styles/formulario.module.css';
+import { TextError } from '@/components/text-error';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Loader } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -28,7 +31,7 @@ export default function Form() {
 			register,
 			handleSubmit, 
 			reset,
-			formState: {errors} 
+			formState: {errors, isSubmitting} 
 		} = useForm<MainFormData>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -41,6 +44,8 @@ export default function Form() {
 	const [output, setOutput] = useState('')
 
 	async function createUser(data: MainFormData) {
+		
+
 		const { name, email } = data;
 		
 		try {
@@ -72,35 +77,47 @@ export default function Form() {
 		}
 	}
 
-	function onSubmit(data: MainFormData) {
+	async function onSubmit(data: MainFormData) {
+		await new Promise((resolve) => setTimeout(resolve, 1000));
+
 		setOutput(JSON.stringify(data, null, 2))
 		createUser(data);
 	}
 
 	return (
-		<div className={styles.container}>
-			<div className={styles.content}>
-				<form onSubmit={handleSubmit(onSubmit)}>
+		<div className='flex justify-center items-center h-screen'>
+			<div className='bg-gray-400 rounded p-1.5 w-[450px]'>
+				<form 
+					className='flex flex-col gap-y-4 p-4'
+					onSubmit={handleSubmit(onSubmit)}
+				>
 					<div>
-						<input type="text" placeholder="Name" {...register("name")}/>
+						<Input type="text" placeholder="Name" {...register("name")}/>
 						{errors.name && 
-							<p>{errors.name.message}</p>
+							<TextError>{errors.name.message}</TextError>
 						}
 					</div>
 
 					<div>
-						<input type="email" placeholder="E-mail" {...register("email")}/>
+						<Input type="email" placeholder="E-mail" {...register("email")}/>
 						{errors.email && 
-							<p>{errors.email.message}</p>
+							<TextError>{errors.email.message}</TextError>
 						}
 					</div>
 
-					<button type="submit" data-type="confirm">
-						Enviar
-					</button>
+					<Button type="submit" variant="success" disabled={isSubmitting}>
+						{isSubmitting ? 
+							<Loader 
+								size={24} 
+								className='animate-spin'
+							/>
+						 : 
+							<p>Enviar</p>
+						}
+					</Button>
 				</form>
 
-				<div className={styles.output}>
+				<div className='px-4 py-2'>
 					{output && (
 						<pre>{output}</pre>
 					)}

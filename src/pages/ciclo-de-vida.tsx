@@ -20,6 +20,7 @@ import { GetServerSideProps } from 'next/types';
 import styles from '@/styles/ciclo-de-vida.module.css';
 import { Counter } from '@/components/Counter';
 import { useEffect, useState } from 'react';
+import { Button } from '@/components/ui/button';
 
 type CicloDeVidaProps = {
 	initialCount: number;
@@ -64,18 +65,18 @@ export default function CicloDeVida({ initialCount }: CicloDeVidaProps) {
 	return (
 		<div className={styles.container}>
 			<div>
-				<button type="button" onClick={handleOculteCounterClick}>
+				<Button variant="secondary" onClick={handleOculteCounterClick}>
 					{showCounter ? 'Ocultar contador' : 'Mostrar contador'}
-				</button>
+				</Button>
 
 				{showCounter && (
-					<>
-						<h1>Exemplo de Ciclo de vida</h1>
+					<div className='bg-gray-400 p-5 h-96 w-96 rounded flex flex-col'>
+						<h1 className='xl font-bold'>Exemplo de Ciclo de vida</h1>
 
-						<div data-content>
+						<div className='flex-1 flex justify-center items-center'>
 							<Counter initialCount={initialCount} />
 						</div>
-					</>
+					</div>
 				)}
 			</div>
 		</div>

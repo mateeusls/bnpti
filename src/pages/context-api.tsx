@@ -10,6 +10,7 @@
 import styles from '@/styles/context-api.module.css';
 import { ToastMessage } from '@/components/ToastMessage';
 import { useMessage } from '@/context/message';
+import { Button } from '@/components/ui/button';
 
 export default function ContextApi() {
 	const { 
@@ -40,12 +41,12 @@ export default function ContextApi() {
 	return (
 		<>
 			<div className={styles.container}>
-				<button type="button" onClick={handleSuccessButtonClick}>
+				<Button variant="secondary" type="button" onClick={handleSuccessButtonClick}>
 					Disparar mensagem de sucesso
-				</button>
-				<button type="button" onClick={handleErrorButtonClick}>
+				</Button>
+				<Button variant="destructive" type="button" onClick={handleErrorButtonClick}>
 					Disparar mensagem de erro
-				</button>
+				</Button>
 			</div>
 
 			<div className={styles['toast-container']}>

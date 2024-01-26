@@ -10,12 +10,11 @@ type ToastMessageProps = {
 
 export const ToastMessage: React.FC<ToastMessageProps> = ({ content: data }) => {
 	const { 
-		isOpen,
 		handleCloseButtonClick
 	} = useMessage()
 
 	return (
-		<div className={styles.container} data-toast-type={data.type} data-toast-id={data.id} data-isOpen={isOpen}>
+		<div className={styles.container} data-toast-type={data.type} data-toast-id={data.id}>
 			<span data-content>{data.message}</span>
 
 			<button data-close onClick={handleCloseButtonClick}>

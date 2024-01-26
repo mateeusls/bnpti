@@ -7,24 +7,36 @@
  * [x] A página deve ser atualizada a cada 1 minuto
  */
 
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { getFetchCities } from '@/lib/scripts/getFetchCities';
-import styles from '@/styles/lista.module.css';
 import { ICity } from '@/types/city.d';
 import { GetStaticProps } from 'next';
 
 export default function Lista({allCities}: {allCities: ICity[]}) {
 	return (
-		<div className={styles.container}>
-			<div className={styles.content}>
-				<h2>Lista de cidades</h2>
-
-				<div data-list-container>
+		<div className="flex justify-center items-center py-4">
+			<div className="bg-gray-400 rounded p-5 w-[900px] h-full space-y-2">
+				<h2 className='xl font-bold'>Lista de cidades</h2>
+				<Table>
+					<TableCaption>A list of your recent cities.</TableCaption>
+					<TableHeader>
+						<TableRow>
+							<TableHead>Name</TableHead>
+							<TableHead>State</TableHead>
+							<TableHead>Country</TableHead>
+						</TableRow>
+					</TableHeader>
+					<TableBody>
 					{allCities.map((city) => (
-						<div data-list-item key={city.id}>
-							{city.name}
-						</div>
+						<TableRow key={city.id}>
+							<TableCell>{city.name}</TableCell>
+							<TableCell>{city.state}</TableCell>
+							<TableCell>{city.country}</TableCell>
+						</TableRow>
 					))}
-				</div>
+						
+					</TableBody>
+				</Table>
 			</div>
 		</div>
 	);
@@ -37,7 +49,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
 			allCities
 		},
-    revalidate: 10, // 1 minuto
+    revalidate: 10, // In seconds
   }
 }
 

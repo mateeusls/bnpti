@@ -19,6 +19,7 @@ import { randomUUID } from 'node:crypto';
 import users from '../../../../users.json'
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
+	
 	const {method} = req
 
 	if(method !== 'POST') {
