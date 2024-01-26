@@ -42,8 +42,9 @@ export default function Lista({allCities}: {allCities: ICity[]}) {
 	);
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
-	const allCities = await getFetchCities()
+export const getStaticProps: GetStaticProps = async () => {
+	const res = await fetch(process.env.URL + '/api/cities/10');
+  const allCities = await res.json()
 	
   return {
     props: {
