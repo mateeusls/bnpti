@@ -1,0 +1,37 @@
+[
+  {
+    "id": "881e86f4-7e8f-4a24-a822-16de145bbc3e",
+    "name": "Matheus Lopes",
+    "email": "matheusdoe@example.com"
+  },
+  {
+    "id": "1b686934-9cad-4353-9042-a766e0d8a392",
+    "name": "Samuel Santos",
+    "email": "samueldoe@example.com"
+  },
+  {
+    "id": "9041a770-2d65-43f6-812e-0f3500082e9f",
+    "name": "John Doe",
+    "email": "johndoe@example.com"
+  },
+  {
+    "id": "69986773-cf58-4890-9d9c-d953139bc87c",
+    "name": "Jane Doe",
+    "email": "janedoe@example.com"
+  },
+  {
+    "id": "96642c2e-6815-4462-9949-d7a0a34d5d50",
+    "name": "Moises Doe",
+    "email": "moisesdoe@example.com"
+  },
+  {
+    "id": "b",
+    "name": "Teste",
+    "email": "test@example.com"
+  },
+  {
+    "id": "bdda84b41594440d910d27a510e70d88",
+    "name": "teste2",
+    "email": "teste@email.com"
+  }
+]

@@ -1,0 +1,42 @@
+:root {
+	--white: #ffffff;
+	--emerald-300: #6ee7b7;
+	--emerald-400: #34d399;
+	--emerald-600: #059669;
+
+	--red-600: #dc2626;
+
+	--green-500: #22c55e;
+
+	--zinc-200: #e4e4e7;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	margin: 0;
+}
+
+#__next {
+	width: 100vw;
+	min-height: 100vh;
+	height: 100vh;
+	padding: 1.5rem;
+}
+
+button {
+	cursor: pointer;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	padding: 0.75rem 1.5rem;
+}
+
+button[data-type='confirm'] {
+	background-color: #4caf50;
+	color: #ffffff;
+	border: none;
+}
