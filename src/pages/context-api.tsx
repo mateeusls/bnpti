@@ -27,9 +27,9 @@ export default function ContextApi() {
 			return (
 				<ToastMessage
 					content={{
-						id: message?.id || '',
-						message: message?.message || '',
-						type: message?.type || 'success',
+						id: message!.id,
+						message: message!.message,
+						type: message!.type,
 						duration: 100,
 					}}
 				/>
@@ -41,7 +41,7 @@ export default function ContextApi() {
 	return (
 		<>
 			<div className={styles.container}>
-				<Button variant="secondary" type="button" onClick={handleSuccessButtonClick}>
+				<Button variant="success" type="button" onClick={handleSuccessButtonClick}>
 					Disparar mensagem de sucesso
 				</Button>
 				<Button variant="destructive" type="button" onClick={handleErrorButtonClick}>

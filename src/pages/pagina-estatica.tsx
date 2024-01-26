@@ -8,9 +8,8 @@
  */
 
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { getFetchCities } from '@/lib/scripts/getFetchCities';
 import { ICity } from '@/types/city.d';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { GetStaticProps } from 'next';
 
 export default function Lista({allCities}: {allCities: ICity[]}) {
 	return (

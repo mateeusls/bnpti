@@ -6,6 +6,21 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+  position: fixed;
+	top: 20px;
+  right: 20px;
+}
+
+.container[data-is-open="false"] {
+	opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.container[data-is-open="true"] {
+	opacity: 1;
+	transform: translateX(0);
+  transition: opacity 0.3s, transform 0.3s;
 }
 
 .container [data-close] {

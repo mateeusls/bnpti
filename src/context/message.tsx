@@ -3,7 +3,7 @@ import { ReactNode, createContext, useContext, useState } from "react";
 
 interface MessageContextData {
   messages: Array<IToastMessage>;
-  typeMessage: 'success' | 'error';
+  typeMessage: 'success' | 'error' | '';
   handleSuccessButtonClick: () => void
   handleErrorButtonClick: () => void;
   isOpen: boolean;
@@ -13,7 +13,7 @@ interface MessageContextData {
 export const MessageContext = createContext({} as MessageContextData);
 
 export function MessageProvider({ children }: { children: ReactNode }) {
-  const [typeMessage, setTypeMessage] = useState<'success' | 'error'>('success')
+  const [typeMessage, setTypeMessage] = useState<'success' | 'error' | ''>('')
 
   const [isOpen, setIsOpen] = useState(true);
 

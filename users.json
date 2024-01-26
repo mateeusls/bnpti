@@ -33,5 +33,10 @@
     "id": "a02fc520-267d-4e6d-bee1-d18c92c21612",
     "name": "Teste",
     "email": "teste@email.com"
+  },
+  {
+    "id": "9838462b-0fe7-407a-aed1-b4416f388c56",
+    "name": "john wick",
+    "email": "johnwick@email.com"
   }
 ]
