@@ -10,7 +10,7 @@
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { getFetchCities } from '@/lib/scripts/getFetchCities';
 import { ICity } from '@/types/city.d';
-import { GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 
 export default function Lista({allCities}: {allCities: ICity[]}) {
 	return (
@@ -43,7 +43,7 @@ export default function Lista({allCities}: {allCities: ICity[]}) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const res = await fetch(process.env.URL + '/api/cities/10');
+	const res = await fetch(process.env.URL + '/api/cities');
   const allCities = await res.json()
 	
   return {

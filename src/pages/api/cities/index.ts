@@ -4,12 +4,14 @@ import { faker } from '@faker-js/faker/locale/pt_BR';
 import { ApiMethod } from '@/decorators/method';
 import { ICity } from '@/types/city';
 
+export const dynamic = 'force-dynamic';
+
 function loop(length: number) {
 	return Array.from({ length }, () => 1).map((_, index) => index + 1);
 }
 
 export default ApiMethod('GET')(async (req: NextApiRequest, res: NextApiResponse) => {
-	const length = Number(req.query.length);
+	const length = 10;
 
 	const cities: ICity[] = [];
 
